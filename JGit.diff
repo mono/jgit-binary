@@ -251,7 +251,7 @@ index e1769f8..128a317 100644
  	static enum AckNackResult {
  		/** NAK */
 diff --git a/org.eclipse.jgit/src/org/eclipse/jgit/transport/RemoteConfig.java b/org.eclipse.jgit/src/org/eclipse/jgit/transport/RemoteConfig.java
-index ba0931b..4358d3f 100644
+index ba0931b..98eabaf 100644
 --- a/org.eclipse.jgit/src/org/eclipse/jgit/transport/RemoteConfig.java
 +++ b/org.eclipse.jgit/src/org/eclipse/jgit/transport/RemoteConfig.java
 @@ -127,6 +127,8 @@
@@ -271,10 +271,10 @@ index ba0931b..4358d3f 100644
  
  		String[] vlst;
  		String val;
-@@ -204,6 +207,11 @@ public RemoteConfig(final Config rc, final String remoteName)
- 		tagopt = TagOpt.fromOption(val);
- 		mirror = rc.getBoolean(SECTION, name, KEY_MIRROR, DEFAULT_MIRROR);
- 		timeout = rc.getInt(SECTION, name, KEY_TIMEOUT, 0);
+@@ -240,6 +243,11 @@ public void update(final Config rc) {
+ 		set(rc, KEY_TAGOPT, getTagOpt().option(), TagOpt.AUTO_FOLLOW.option());
+ 		set(rc, KEY_MIRROR, mirror, DEFAULT_MIRROR);
+ 		set(rc, KEY_TIMEOUT, timeout, 0);
 +
 +		if (!oldName.equals(name)) {
 +			rc.unsetSection(SECTION, oldName);
@@ -282,7 +282,7 @@ index ba0931b..4358d3f 100644
 +		}
  	}
  
- 	/**
+ 	private void set(final Config rc, final String key,
 @@ -309,6 +317,16 @@ public String getName() {
  	}
  
