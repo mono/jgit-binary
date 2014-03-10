@@ -251,10 +251,39 @@ index e1769f8..128a317 100644
  	static enum AckNackResult {
  		/** NAK */
 diff --git a/org.eclipse.jgit/src/org/eclipse/jgit/transport/RemoteConfig.java b/org.eclipse.jgit/src/org/eclipse/jgit/transport/RemoteConfig.java
-index ba0931b..bfeada0 100644
+index ba0931b..4358d3f 100644
 --- a/org.eclipse.jgit/src/org/eclipse/jgit/transport/RemoteConfig.java
 +++ b/org.eclipse.jgit/src/org/eclipse/jgit/transport/RemoteConfig.java
-@@ -309,6 +309,16 @@ public String getName() {
+@@ -127,6 +127,8 @@
+ 
+ 	private String name;
+ 
++	private String oldName;
++
+ 	private List<URIish> uris;
+ 
+ 	private List<URIish> pushURIs;
+@@ -163,6 +165,7 @@
+ 	public RemoteConfig(final Config rc, final String remoteName)
+ 			throws URISyntaxException {
+ 		name = remoteName;
++		oldName = name;
+ 
+ 		String[] vlst;
+ 		String val;
+@@ -204,6 +207,11 @@ public RemoteConfig(final Config rc, final String remoteName)
+ 		tagopt = TagOpt.fromOption(val);
+ 		mirror = rc.getBoolean(SECTION, name, KEY_MIRROR, DEFAULT_MIRROR);
+ 		timeout = rc.getInt(SECTION, name, KEY_TIMEOUT, 0);
++
++		if (!oldName.equals(name)) {
++			rc.unsetSection(SECTION, oldName);
++			oldName = name;
++		}
+ 	}
+ 
+ 	/**
+@@ -309,6 +317,16 @@ public String getName() {
  	}
  
  	/**
