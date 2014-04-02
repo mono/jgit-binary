@@ -19,4 +19,5 @@ To update the files, you need to follow the steps below:
 
 * Grab the latest JUnit and Hamcrest core Jars.
 * Run `ikvmc.exe -sharedclassloader -target:library jgit.jar jsch.jar jgit-test.jar junit.jar hamcrest-core.jar`.
+* Run `monolinker -l none -x imports.xml -a JGit.dll`
 * Replace binaries in the repository and run MonoDevelop tests.
