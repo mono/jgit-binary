@@ -67,6 +67,14 @@
 		<type fullname="java.net.Authenticator" preserve="All" feature="dynamic" />
 		<type fullname="java.net.PasswordAuthentication" preserve="All" feature="dynamic" />
 		<type fullname="java.net.InetAddress" preserve="All" feature="dynamic" />
+		<type fullname="java.net.InetAddressImplFactory" preserve="All" feature="dynamic" />
+		<type fullname="java.net.Inet6AddressImpl" preserve="All" feature="dynamic" />
+		<type fullname="java.net.Inet6Address" preserve="All" feature="dynamic" />
+		<type fullname="java.net.Inet4AddressImpl" preserve="All" feature="dynamic" />
+		<type fullname="java.net.Inet4Address" preserve="All" feature="dynamic" />
+		<type fullname="java.net.InetAddressImpl" preserve="All" feature="dynamic" />
+		<type fullname="java.net.InetAddress$2" preserve="All" feature="dynamic" />
+		<type fullname="java.net.InetAddress$1" preserve="All" feature="dynamic" />
 		<type fullname="java.net.URL" preserve="All" feature="dynamic" />
 		<type fullname="java.net.Authenticator+RequestorType" preserve="All" feature="dynamic" />
 		<type fullname="java.io.Writer" preserve="All" feature="dynamic" />
